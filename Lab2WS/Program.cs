@@ -11,9 +11,12 @@ namespace Lab2WS
 
         static void Main(string[] args)
         {
+
             try
             {
                 bool value = true;
+
+                
                 do
                 {
                     Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
@@ -56,10 +59,30 @@ namespace Lab2WS
                     }
                 } while (!value);
 
-                // Optional for now (when you have no loop)  (Take out when finished)
-                //Console.ReadKey();
+                    Console.WriteLine("Do you want to restart? Y/N");
+                    String wannaRestart = Console.ReadLine();
+
+                    bool restart = false;
+                    do { 
+                    switch (wannaRestart.ToUpper())
+                    {
+                        case "Y":
+                            restart = true;
+                            value = true;
+                            break;
+                        case "N":
+                            restart = true;
+                            value = false;
+                            break;
+                        default:
+                            Console.Write("Did not understand, can you repeat? Y/N");
+                            restart = false;
+                            continue;
+                    }
+                 }while (!restart) ;
 
             }
+
             catch (Exception e)
             {
                 Console.WriteLine("Sorry an error has occurred.. " + e.Message);
