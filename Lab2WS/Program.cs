@@ -68,12 +68,12 @@ namespace Lab2WS
                         case "Y":
                         case "YES":
                             restart = true;
-                            value = true;
+                            value = false;
                             break;
                         case "N":
                         case "NO":
                             restart = true;
-                            value = false;
+                            value = true;
                             break;
                         default:
                             Console.WriteLine(Constants.repeat_option);
