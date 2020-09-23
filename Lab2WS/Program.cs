@@ -16,7 +16,6 @@ namespace Lab2WS
 
                 string option = Console.ReadLine() ?? throw new Exception("String is null");
 
-
                 switch (option.ToUpper())
                 {
                     case "F":
