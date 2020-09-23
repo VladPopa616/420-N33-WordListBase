@@ -16,6 +16,7 @@ namespace Lab2WS
 
                 string option = Console.ReadLine() ?? throw new Exception("String is null");
 
+
                 switch (option.ToUpper())
                 {
                     case "F":
@@ -27,7 +28,7 @@ namespace Lab2WS
                         ExecuteScrambledWordsManualEntryScenario();
                         break;
                     default:
-                        Console.WriteLine("The entered option was not recognized");
+                        Console.WriteLine("The entered option was not recognized. Please try again.");
                         break;
                 }
 
@@ -38,6 +39,7 @@ namespace Lab2WS
             catch (Exception e)
             {
                 Console.WriteLine("Sorry an error has occurred.. " + e.Message);
+
             }
             
 
@@ -56,7 +58,10 @@ namespace Lab2WS
             // 1 get the user's input - comma separated string containing scrambled words
             // 2 Extract the words into a string (red,blue,green) 
             // 3 Call the DisplayMatchedUnscrambledWords method passing the scrambled words string array
-
+            string listWord = Console.ReadLine();
+            string[] splitList = listWord.Split(' ', ',', '.');
+                DisplayMatchedScrambledWords(splitList);
+            
         }
 
         private static void DisplayMatchedScrambledWords(string[] scrambledWords)
