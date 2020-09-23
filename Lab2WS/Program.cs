@@ -13,38 +13,48 @@ namespace Lab2WS
         {
             try
             {
+                bool value = true;
+                do
+                {
+                    Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
 
-                Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
+                    string option = Console.ReadLine() ?? throw new Exception("String is null");
+                    //option.ToUpper();
 
-                string option = Console.ReadLine() ?? throw new Exception("String is null");
-                option.ToUpper();
+                    //string option = "";
 
-                while ((option != "M") || (option != "F"))
+                    // while ((!option.Equals ("M")) || (!option.Equals("F"))|| (!option.Equals("f")) || (!option.Equals("m")))
+                    //    {
+                    //             Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
+                    //            
+                    //             string option2 = Console.ReadLine().Trim() ?? throw new Exception("String is null");
+                    //            option2.ToUpper();
+                    //            option = option2;
+                    //            Console.WriteLine(option);
+                    //}
+
                     {
-                            Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
+                        switch (option.ToUpper())
+                        {
+                            case "F":
+                                Console.WriteLine("Enter the full path and filename >");
+                                ExecuteScrambledWordsInFileScenario();
+                                value = true;
+                                break;
+                            case "M":
+                                Console.WriteLine("Enter word(s) separated by a comma");
+                                ExecuteScrambledWordsManualEntryScenario();
+                                value = true;
+                                break;
+                            default:
+                                Console.WriteLine("The entered option was not recognized. Please try again.");
+                                value = false;
+                                continue;
 
-                            option = Console.ReadLine() ?? throw new Exception("String is null");
-                            option.ToUpper();
-                }
-
-                    
-
-                    switch (option.ToUpper())
-                    {
-                        case "F":
-                            Console.WriteLine("Enter the full path and filename >");
-                            ExecuteScrambledWordsInFileScenario();
-                            break;
-                        case "M":
-                            Console.WriteLine("Enter word(s) separated by a comma");
-                            ExecuteScrambledWordsManualEntryScenario();
-                            break;
-                        default:
-                            Console.WriteLine("The entered option was not recognized. Please try again.");
-                            break;
+                        }
 
                     }
-
+                } while (!value);
 
                 // Optional for now (when you have no loop)  (Take out when finished)
                 //Console.ReadKey();
@@ -73,8 +83,36 @@ namespace Lab2WS
             // 2 Extract the words into a string (red,blue,green) 
             // 3 Call the DisplayMatchedUnscrambledWords method passing the scrambled words string array
             string listWord = Console.ReadLine();
+            
+
+
+            Console.WriteLine("Any more words to add? Y/N");
+            string moreWords = Console.ReadLine();
+
+            bool value = true;
+
+            do
+            {
+                switch (moreWords.ToUpper())
+                {
+                    case "Y":
+                        Console.WriteLine("Enter the words:");
+                        string listWord2 = Console.ReadLine();
+                        listWord = String.Join(",", listWord, listWord2);
+                        value = true;
+                        break;
+                    case "N":
+                        value = true;
+                        break;
+                    default:
+                        Console.WriteLine("Not an option, please enter Y/N");
+                        value = false;
+                        continue;
+                }
+            } while (!value);
+
             string[] splitList = listWord.Split(' ', ',', '.');
-                DisplayMatchedScrambledWords(splitList);
+            DisplayMatchedScrambledWords(splitList);
             
         }
 
