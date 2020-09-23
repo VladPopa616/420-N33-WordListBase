@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace Lab2WS
 {
@@ -22,31 +23,52 @@ namespace Lab2WS
                     }
                     else
                     {
-                        //convert strings into character arrays i.e. ToCharArray()
-                        //sort both character arrays
-                        //convert sorted character arrays into strings (toString)
-                        // 
-                        //compare the two sorted strings. If they match, build the MatchWord
-                        //struct and add to matchedWords list.
+                        char[] scrambled = scrambledWord.ToCharArray();
+                        char[] words = word.ToCharArray();
+
+                        Array.Sort(scrambled);
+                        Array.Sort(words);
+
+                        string scordered = "";
+
+                        foreach (var chr in scrambled)
+                        {
+                            scordered += chr.ToString();
+                        }
+
+                        string wordered = "";
+
+                        foreach (var chr in words)
+                        {
+                            wordered += chr.ToString();
+                        }
+
+                        if (scordered.Equals(wordered, StringComparison.OrdinalIgnoreCase))
+                        {
+                            matchedWords.Add(BuildMatchedWord(scrambledWord, word));
+                        }
                     }
 
                 }
             }
 
-            return null;
-        }
 
-        MatchedWord BuildMatchedWord(string scrambledWord, string word)
-        {
-            MatchedWord matchedWord = new MatchedWord()
+
+
+            MatchedWord BuildMatchedWord(string scrambledWord, string word)
             {
-                ScrambledWord = scrambledWord,
-                Word = word
-            };
+                MatchedWord matchedWord = new MatchedWord()
+                {
+                    ScrambledWord = scrambledWord,
+                    Word = word
+                };
 
-            return matchedWord;
+                return matchedWord;
+            }
+            return matchedWords;
+
         }
-
+          
 
 
     }
