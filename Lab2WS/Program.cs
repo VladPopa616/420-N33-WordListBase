@@ -19,9 +19,9 @@ namespace Lab2WS
                 
                 do
                 {
-                    Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
+                    Console.WriteLine(Constants.select_file_manual);
 
-                    string option = Console.ReadLine() ?? throw new Exception("String is null");
+                    string option = Console.ReadLine() ?? throw new Exception(Constants.string_null);
                     //option.ToUpper();
 
                     //string option = "";
@@ -40,17 +40,17 @@ namespace Lab2WS
                         switch (option.ToUpper())
                         {
                             case "F":
-                                Console.WriteLine("Enter the full path and filename >");
+                                Console.WriteLine(Constants.file_path_entry);
                                 ExecuteScrambledWordsInFileScenario();
                                 value = true;
                                 break;
                             case "M":
-                                Console.WriteLine("Enter word(s) separated by a comma");
+                                Console.WriteLine(Constants.manual_entry);
                                 ExecuteScrambledWordsManualEntryScenario();
                                 value = true;
                                 break;
                             default:
-                                Console.WriteLine("The entered option was not recognized. Please try again.");
+                                Console.WriteLine(Constants.repeat_option);
                                 value = false;
                                 continue;
 
@@ -59,7 +59,7 @@ namespace Lab2WS
                     }
                 } while (!value);
 
-                    Console.WriteLine("Do you want to restart? Y/N");
+                    Console.WriteLine(Constants.restart_msg);
                     String wannaRestart = Console.ReadLine();
 
                     bool restart = false;
@@ -75,7 +75,7 @@ namespace Lab2WS
                             value = false;
                             break;
                         default:
-                            Console.Write("Did not understand, can you repeat? Y/N");
+                            Console.WriteLine(Constants.repeat_option);
                             restart = false;
                             continue;
                     }
@@ -85,7 +85,7 @@ namespace Lab2WS
 
             catch (Exception e)
             {
-                Console.WriteLine("Sorry an error has occurred.. " + e.Message);
+                Console.WriteLine(Constants.error_msg + e.Message);
 
             }
             
@@ -105,11 +105,10 @@ namespace Lab2WS
             // 1 get the user's input - comma separated string containing scrambled words
             // 2 Extract the words into a string (red,blue,green) 
             // 3 Call the DisplayMatchedUnscrambledWords method passing the scrambled words string array
+            Console.WriteLine(Constants.enter_words);
             string listWord = Console.ReadLine();
-            
 
-
-            Console.WriteLine("Any more words to add? Y/N");
+            Console.WriteLine(Constants.add_words);
             string moreWords = Console.ReadLine();
 
             bool value = true;
@@ -119,7 +118,7 @@ namespace Lab2WS
                 switch (moreWords.ToUpper())
                 {
                     case "Y":
-                        Console.WriteLine("Enter the words:");
+                        Console.WriteLine(Constants.enter_words);
                         string listWord2 = Console.ReadLine();
                         listWord = String.Join(",", listWord, listWord2);
                         value = true;
@@ -128,7 +127,7 @@ namespace Lab2WS
                         value = true;
                         break;
                     default:
-                        Console.WriteLine("Not an option, please enter Y/N");
+                        Console.WriteLine(Constants.repeat_option);
                         value = false;
                         continue;
                 }
