@@ -108,13 +108,14 @@ namespace Lab2WS
             Console.WriteLine(Constants.enter_words);
             string listWord = Console.ReadLine();
 
-            Console.WriteLine(Constants.add_words);
-            string moreWords = Console.ReadLine();
+
 
             bool value = true;
 
             do
-            {
+            { 
+                Console.WriteLine(Constants.add_words);
+                string moreWords = Console.ReadLine();
                 switch (moreWords.ToUpper())
                 {
                     case "Y":
