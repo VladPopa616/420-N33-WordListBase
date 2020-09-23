@@ -59,18 +59,21 @@ namespace Lab2WS
                     }
                 } while (!value);
 
-                    Console.WriteLine(Constants.restart_msg);
-                    String wannaRestart = Console.ReadLine();
+
 
                     bool restart = false;
                     do { 
+                    Console.WriteLine(Constants.restart_msg);
+                    String wannaRestart = Console.ReadLine();
                     switch (wannaRestart.ToUpper())
                     {
                         case "Y":
+                        case "YES":
                             restart = true;
                             value = true;
                             break;
                         case "N":
+                        case "NO":
                             restart = true;
                             value = false;
                             break;
@@ -119,12 +122,14 @@ namespace Lab2WS
                 switch (moreWords.ToUpper())
                 {
                     case "Y":
+                    case "YES":
                         Console.WriteLine(Constants.enter_words);
                         string listWord2 = Console.ReadLine();
                         listWord = String.Join(",", listWord, listWord2);
                         value = true;
                         break;
                     case "N":
+                    case "NO":
                         value = true;
                         break;
                     default:
