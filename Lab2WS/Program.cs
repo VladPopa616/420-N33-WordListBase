@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Lab2WS
 {
@@ -65,12 +66,23 @@ namespace Lab2WS
 
             List<MatchedWord> matchedWords = wordMatcher.Match(scrambledWords, wordList);
 
+            if (matchedWords == null)
+            {
+                Console.WriteLine(Constants.file_path_invalid);
+            }
 
-            // Rule:  Use a formatter to display ... eg:  {0}{1}
-
-            // Rule:  USe an IF to determine if matchedWords is empty or not......
-            //            if empty - display no words found message.
-            //            if NOT empty - Display the matches.... use "foreach" with the list (matchedWords)
+            else if (matchedWords.Any())
+            {
+                foreach(var mw in matchedWords)
+                {
+                    Console.WriteLine(Constants.matched_found, mw.ScrambledWord, mw.Word);
+                }
+            }
+            else
+            {
+                Console.WriteLine(Constants.no_match_found);
+            }
+    
         }
     }
 }
