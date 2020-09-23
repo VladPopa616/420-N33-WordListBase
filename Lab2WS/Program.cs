@@ -57,9 +57,7 @@ namespace Lab2WS
                         }
 
                     }
-                } while (!value);
-
-
+                
 
                     bool restart = false;
                     do { 
@@ -82,8 +80,9 @@ namespace Lab2WS
                             restart = false;
                             continue;
                     }
-                 }while (!restart) ;
+                 }while (!restart);
 
+                } while (!value);
             }
 
             catch (Exception e)
