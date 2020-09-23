@@ -13,27 +13,41 @@ namespace Lab2WS
         {
             try
             {
+
                 Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
 
                 string option = Console.ReadLine() ?? throw new Exception("String is null");
+                option.ToUpper();
 
-                switch (option.ToUpper())
-                {
-                    case "F":
-                        Console.WriteLine("Enter the full path and filename >");
-                        ExecuteScrambledWordsInFileScenario();
-                        break;
-                    case "M":
-                        Console.WriteLine("Enter word(s) separated by a comma");
-                        ExecuteScrambledWordsManualEntryScenario();
-                        break;
-                    default:
-                        Console.WriteLine("The entered option was not recognized. Please try again.");
-                        break;
+                while ((option != "M") || (option != "F"))
+                    {
+                            Console.WriteLine("Enter the scrambled words manually or as a file: f - file, m = manual");
+
+                            option = Console.ReadLine() ?? throw new Exception("String is null");
+                            option.ToUpper();
                 }
 
+                    
+
+                    switch (option.ToUpper())
+                    {
+                        case "F":
+                            Console.WriteLine("Enter the full path and filename >");
+                            ExecuteScrambledWordsInFileScenario();
+                            break;
+                        case "M":
+                            Console.WriteLine("Enter word(s) separated by a comma");
+                            ExecuteScrambledWordsManualEntryScenario();
+                            break;
+                        default:
+                            Console.WriteLine("The entered option was not recognized. Please try again.");
+                            break;
+
+                    }
+
+
                 // Optional for now (when you have no loop)  (Take out when finished)
-                Console.ReadKey();
+                //Console.ReadKey();
 
             }
             catch (Exception e)
