@@ -11,8 +11,7 @@ namespace Lab2WS
         public const string file_path_invalid = "Uh...can't seem to find the file path...";
         public const string matched_found = "MATCH FOUND FOR \"{0}\": \"{1}\"";
         public const string no_match_found = "No matches...better luck next time!";
-        public const string repeat_option = "Not quite the good answer there bud, it's either Y/N";
-        public const string repeat_option_fm = "Not quite the good answer there bud, it's either F = File/M = Manual";
+        public const string repeat_option = "Not quite the good answer there bud...";
         public const string add_words = "Any more words to add? Y/N";
         public const string enter_words = "Enter the words: ";
         public const string error_msg = "Uh oh, seems like we have encountered a ";

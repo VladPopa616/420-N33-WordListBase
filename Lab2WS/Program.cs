@@ -50,7 +50,7 @@ namespace Lab2WS
                                 value = true;
                                 break;
                             default:
-                                Console.WriteLine(Constants.repeat_option_fm);
+                                Console.WriteLine(Constants.repeat_option);
                                 value = false;
                                 continue;
 
